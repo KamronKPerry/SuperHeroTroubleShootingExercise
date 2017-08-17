@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SuperHeroInc.DATA.Alignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AlignName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlignDesc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlignName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlignDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AlignID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AlignID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AlignID })
+        </td>
+    </tr>
+}
+
+</table>

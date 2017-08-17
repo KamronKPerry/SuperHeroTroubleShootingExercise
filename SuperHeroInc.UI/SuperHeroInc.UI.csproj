@@ -168,9 +168,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlignmentsController.cs" />
+    <Compile Include="Controllers\CharactersController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,8 +258,8 @@
     <Content Include="_Archive\superheros-html\js\vendor\jquery-1.11.2.min.js" />
     <Content Include="_Archive\superheros-html\single.html" />
     <Content Include="_Archive\superheros-html\style.css" />
-    <Content Include="Content\img\.DS_Store" />
-    <Content Include="Content\img\header-bg" />
+    <None Include="Content\img\.DS_Store" />
+    <Content Include="Content\img\header-bg.jpg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -268,7 +272,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -329,11 +335,31 @@
     <Content Include="_Archive\superheros-html\fonts\Material-Design-Icons.ttf" />
     <Content Include="_Archive\superheros-html\fonts\Material-Design-Icons.woff" />
     <Content Include="_Archive\superheros-html\img\.DS_Store" />
-    <Content Include="_Archive\superheros-html\img\header-bg" />
+    <Content Include="_Archive\superheros-html\img\header-bg.jpg" />
     <Content Include="_Archive\superheros-html\js\.DS_Store" />
     <Content Include="_Archive\superheros-html\js\vendor\.DS_Store" />
     <Content Include="Scripts\SiteJS\vendor\.DS_Store" />
     <Content Include="Scripts\SiteJS\.DS_Store" />
+    <Content Include="Views\Alignments\Create.cshtml" />
+    <Content Include="Views\Alignments\Delete.cshtml" />
+    <Content Include="Views\Alignments\Details.cshtml" />
+    <Content Include="Views\Alignments\Edit.cshtml" />
+    <Content Include="Views\Alignments\Index.cshtml" />
+    <Content Include="Views\Characters\Create.cshtml" />
+    <Content Include="Views\Characters\Delete.cshtml" />
+    <Content Include="Views\Characters\Details.cshtml" />
+    <Content Include="Views\Characters\Edit.cshtml" />
+    <Content Include="Views\Characters\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +371,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperHeroInc.DATA\SuperHeroInc.DATA.csproj">
+      <Project>{17cfefbd-2354-4dca-8783-0f26d73aea10}</Project>
+      <Name>SuperHeroInc.DATA</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

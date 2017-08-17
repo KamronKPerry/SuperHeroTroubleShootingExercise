@@ -1,0 +1,34 @@
+﻿@model SuperHeroInc.DATA.Alignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alignment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlignName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlignName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlignDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlignDesc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlignID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

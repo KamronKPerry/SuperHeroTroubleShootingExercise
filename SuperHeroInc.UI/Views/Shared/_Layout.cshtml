@@ -16,13 +16,13 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/material.min.css" rel="stylesheet" />
     <link href="~/Content/ripples.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
-
+    
 </head>
 <body>
     <header class="header">
@@ -31,7 +31,7 @@
         <div class="site-title-table">
             <div class="site-title-tablecell">
                 <div class="slide-text">
-                    <h2><a href="index.html"><span>S</span>uper<span>H</span>eros</a></h2>
+                    <h2><a href="@Url.Action("Index","Home")"><span>S</span>uper<span>H</span>eros</a></h2>
                     <p>Another exciting blog template from awesome team</p>
                 </div>
             </div>
@@ -49,12 +49,12 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html">Home <div class="ripple-wrapper"></div></a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="archive.html">Movie</a></li>
-                        <li><a href="archive.html">Sports</a></li>
-                        <li><a href="archive.html">Travel</a></li>
-                        <li><a href="single.html">Single</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="@Url.Action("About","Home")">About</a></li>
+                        <li><a href="@Url.Action("Archive","Home")">Movie</a></li>
+                        <li><a href="@Url.Action("Archive","Home")">Sports</a></li>
+                        <li><a href="@Url.Action("Archive","Home")">Travel</a></li>
+                        <li><a href="@Url.Action("Single","Home")">Single</a></li>
+                        <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                         <li>
                             <div class="social-links">
                                 <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
@@ -64,16 +64,65 @@
                                 <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-linkedin"></i> <div class="ripple-wrapper"></div></a>
                             </div>
                         </li>
+                        <li>@Html.Partial("_LoginPartial")</li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
-    @Html.Partial("_LoginPartial")
     @RenderBody()
     <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-lg-offset-1">
+                        <div class="footer-wid">
+                            <h2 class="wid-title">A<span>vengers</span></h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan,
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6">
+                        <div class="footer-wid">
+                            <h2 class="wid-title">Newsletter</h2>
+                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+
+                            <div class="newsletter-form">
+                                <form action="index.html">
+                                    <input class="shadow-z-1" type="email" placeholder="Your Email address">
+                                    <button type="submit" class="btn btn-material-red">Subscribe Now!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-bottom">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="copyright-text">
+                                        <p>&copy; @DateTime.Now.Year - Avengers - All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="social-links footer-social-links">
+                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
+                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
+                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-google-plus"></i> <div class="ripple-wrapper"></div></a>
+                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-youtube"></i> <div class="ripple-wrapper"></div></a>
+                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-linkedin"></i> <div class="ripple-wrapper"></div></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
     </footer>
 
 
