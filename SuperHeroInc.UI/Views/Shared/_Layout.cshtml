@@ -69,10 +69,10 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="@Url.Action("Index","Alignment")">Alignments</a>
+                            <li><a href="@Url.Action("Index","Alignments")">Alignments</a>
                                 <ul>
                                     <li>
-                                        <a href="@Url.Action("Create","Alignment")">New Alignment</a>"
+                                        <a href="@Url.Action("Create","Alignments")">New Alignment</a>"
                                     </li>
                                 </ul></li>
                             <li><a href="@Url.Action("Index","Status")">Statuses</a>
@@ -85,7 +85,7 @@
                         else if (User.IsInRole("Hero"))
                         {
                             <li><a href="@Url.Action("Index","Characters")">Heroes</a></li>
-                            <li><a href="@Url.Action("Index","Alignment")">Alignments</a></li>
+                            <li><a href="@Url.Action("Index","Alignments")">Alignments</a></li>
                             <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
                         }
                         <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
