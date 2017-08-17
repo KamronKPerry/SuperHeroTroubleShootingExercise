@@ -21,7 +21,7 @@ namespace SuperHeroInc.UI.Controllers
             return View(events.ToList());
         }
 
-        // GET: Events/Details/5
+        // GET: Events/Details/
         public ActionResult Details(int? id)
         {
             if (id == null)
