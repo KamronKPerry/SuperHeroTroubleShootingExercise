@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(SuperHeroInc.UI.Startup))]
-namespace SuperHeroInc.UI
+namespace IdentitySample
 {
     public partial class Startup
     {
