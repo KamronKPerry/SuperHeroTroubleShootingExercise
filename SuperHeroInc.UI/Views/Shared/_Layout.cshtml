@@ -22,7 +22,7 @@
     <link href="~/Content/ripples.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
-    
+
 </head>
 <body>
     <header class="header">
@@ -49,11 +49,45 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html">Home <div class="ripple-wrapper"></div></a></li>
-                        <li><a href="@Url.Action("About","Home")">About</a></li>
-                        <li><a href="@Url.Action("Archive","Home")">Movie</a></li>
-                        <li><a href="@Url.Action("Archive","Home")">Sports</a></li>
-                        <li><a href="@Url.Action("Archive","Home")">Travel</a></li>
-                        <li><a href="@Url.Action("Single","Home")">Single</a></li>
+                        <li><a href="@Url.Action("About","Home")">Our Mission</a></li>
+                        <li>
+                            <a href="@Url.Action("Index","Events")">Events</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <ul>
+                                    <li><a href="@Url.Action("Create","Events")">Create Event</a></li>
+                                </ul>
+                            }
+                        </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index","Characters")">Heroes</a>
+                                <ul>
+                                    <li><a href="@Url.Action("Create","Characters")">New Hero</a>"
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("Index","Alignment")">Alignments</a>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Create","Alignment")">New Alignment</a>"
+                                    </li>
+                                </ul></li>
+                            <li><a href="@Url.Action("Index","Status")">Statuses</a>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Create","Status")">New Status</a>"
+                                    </li>
+                                </ul></li>
+                        }
+                        else if (User.IsInRole("Hero"))
+                        {
+                            <li><a href="@Url.Action("Index","Characters")">Heroes</a></li>
+                            <li><a href="@Url.Action("Index","Alignment")">Alignments</a></li>
+                            <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
+                        }
                         <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                         <li>
                             <div class="social-links">
@@ -72,57 +106,57 @@
     </header>
     @RenderBody()
     <hr />
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-md-6 col-lg-offset-1">
-                        <div class="footer-wid">
-                            <h2 class="wid-title">A<span>vengers</span></h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan,
-                            </p>
-                        </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-lg-offset-1">
+                    <div class="footer-wid">
+                        <h2 class="wid-title">A<span>vengers</span></h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                            nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan,
+                        </p>
                     </div>
-                    <div class="col-lg-5 col-md-6">
-                        <div class="footer-wid">
-                            <h2 class="wid-title">Newsletter</h2>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="footer-wid">
+                        <h2 class="wid-title">Newsletter</h2>
+                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 
-                            <div class="newsletter-form">
-                                <form action="index.html">
-                                    <input class="shadow-z-1" type="email" placeholder="Your Email address">
-                                    <button type="submit" class="btn btn-material-red">Subscribe Now!</button>
-                                </form>
-                            </div>
+                        <div class="newsletter-form">
+                            <form action="index.html">
+                                <input class="shadow-z-1" type="email" placeholder="Your Email address">
+                                <button type="submit" class="btn btn-material-red">Subscribe Now!</button>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="footer-bottom">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="copyright-text">
-                                        <p>&copy; @DateTime.Now.Year - Avengers - All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
-                                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-bottom">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="copyright-text">
+                                    <p>&copy; @DateTime.Now.Year - Avengers - All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="social-links footer-social-links">
-                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
-                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
-                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-google-plus"></i> <div class="ripple-wrapper"></div></a>
-                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-youtube"></i> <div class="ripple-wrapper"></div></a>
-                                        <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-linkedin"></i> <div class="ripple-wrapper"></div></a>
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="social-links footer-social-links">
+                                    <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-google-plus"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-youtube"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-linkedin"></i> <div class="ripple-wrapper"></div></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-       
+        </div>
+
     </footer>
 
 

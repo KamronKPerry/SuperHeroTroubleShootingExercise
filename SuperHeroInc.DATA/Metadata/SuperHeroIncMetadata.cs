@@ -49,7 +49,7 @@ namespace SuperHeroInc.DATA.Metadata
             [Display(Name ="Instructor ID")]
             [Required(ErrorMessage ="Required to create an event")]
             public int Instructor { get; set; }
-           //[Range(DateTime.Now, DateTime.Now.AddDays(60)] //Max DateTime allowed???
+           //[Range(DateTime.Now, DateTime.Now.AddDays(60)] //Max DateTime allowed??? TASK: Date Time Range restriction? 
            [Display(Name = "Event Date")]
            [Required(ErrorMessage ="*Required to create an event")]
             public System.DateTime EventDate { get; set; }
