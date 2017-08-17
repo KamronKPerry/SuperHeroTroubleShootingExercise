@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace IdentitySample
+namespace SuperHeroInc.UI
 {
     public class FilterConfig
     {

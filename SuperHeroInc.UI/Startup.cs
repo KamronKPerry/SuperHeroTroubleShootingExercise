@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-namespace IdentitySample
+namespace SuperHeroInc.UI
 {
     public partial class Startup
     {
