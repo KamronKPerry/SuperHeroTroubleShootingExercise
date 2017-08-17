@@ -10,6 +10,7 @@ using SuperHeroInc.DATA;
 
 namespace SuperHeroInc.UI.Controllers
 {
+    [Authorize(Roles ="Admin, Hero")]
     public class StatusController : Controller
     {
         private SuperHeroIncEntities db = new SuperHeroIncEntities();
@@ -36,6 +37,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Status/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +48,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "StatusID,StatusName,StatusDesc")] Status status)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Status/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +82,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "StatusID,StatusName,StatusDesc")] Status status)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Status/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace SuperHeroInc.UI.Controllers
         // POST: Status/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Status status = db.Status.Find(id);

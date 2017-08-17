@@ -10,6 +10,7 @@ using SuperHeroInc.DATA;
 
 namespace SuperHeroInc.UI.Controllers
 {
+    [Authorize(Roles ="Admin, Hero")]
     public class CharactersController : Controller
     {
         private SuperHeroIncEntities db = new SuperHeroIncEntities();
@@ -37,6 +38,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Characters/Create
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             ViewBag.AlignID = new SelectList(db.Alignments, "AlignID", "AlignName");
@@ -49,6 +51,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "CharID,Name,Alias,AlignID,StatusID")] Character character)
         {
             if (ModelState.IsValid)
@@ -64,6 +67,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Characters/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +89,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "CharID,Name,Alias,AlignID,StatusID")] Character character)
         {
             if (ModelState.IsValid)
@@ -99,6 +104,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Characters/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +122,7 @@ namespace SuperHeroInc.UI.Controllers
         // POST: Characters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Character character = db.Characters.Find(id);

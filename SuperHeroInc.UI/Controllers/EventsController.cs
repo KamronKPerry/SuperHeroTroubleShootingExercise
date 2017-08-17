@@ -37,6 +37,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Events/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Instructor = new SelectList(db.Characters, "CharID", "Name");
@@ -48,6 +49,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "EventID,EventName,Description,Instructor,EventDate,isRecurring,Location")] Event @event)
         {
             if (ModelState.IsValid)
@@ -62,6 +64,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Events/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +85,7 @@ namespace SuperHeroInc.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "EventID,EventName,Description,Instructor,EventDate,isRecurring,Location")] Event @event)
         {
             if (ModelState.IsValid)
@@ -95,6 +99,7 @@ namespace SuperHeroInc.UI.Controllers
         }
 
         // GET: Events/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +117,7 @@ namespace SuperHeroInc.UI.Controllers
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = db.Events.Find(id);
