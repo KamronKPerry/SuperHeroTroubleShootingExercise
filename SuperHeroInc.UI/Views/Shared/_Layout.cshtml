@@ -35,80 +35,86 @@
                 </div>
             </div>
         </div>
-        <div class="mainmenu">
-            <div class="navbar navbar-nobg">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="@Url.Action("Index","Home")">Home <div class="ripple-wrapper"></div></a></li>
-                        <li><a href="@Url.Action("About","Home")">Our Mission</a></li>
-                        <li class="dropdown-custom">
-                            <a href="@Url.Action("Index","Events")">Events</a>
+        <div class="mainmenu col-md-12">            
+                <div class="navbar navbar-nobg">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="@Url.Action("Index","Home")">Home <div class="ripple-wrapper"></div></a></li>
+                            <li><a href="@Url.Action("About","Home")">Our Mission</a></li>
+                            <li class="dropdown-custom">
+                                <a href="@Url.Action("Index","Events")">Events</a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="dropdown-item">
+                                        <ul>
+                                            <li><a href="@Url.Action("Create","Events")">Create Event</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                            </li>
+
                             @if (User.IsInRole("Admin"))
                             {
-                                <div class="dropdown-item"><ul>
-                                    <li><a href="@Url.Action("Create","Events")">Create Event</a></li>
-                                </ul></div>
+                                <li class="dropdown-custom">
+                                    <a href="@Url.Action("Index","Characters")">Heroes</a>
+                                    <div class="dropdown-item">
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Create","Characters")">New Hero</a>"
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="dropdown-custom">
+                                    <a href="@Url.Action("Index","Alignments")">Alignments</a>
+                                    <div class="dropdown-item">
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Create","Alignments")">New Alignment</a>"
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="dropdown-custom">
+                                    <a href="@Url.Action("Index","Status")">Statuses</a>
+                                    <div class="dropdown-item">
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Create","Status")">New Status</a>"
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             }
-                        </li>
-
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="dropdown-custom">
-                                <a href="@Url.Action("Index","Characters")">Heroes</a>
-                                <div class="dropdown-item">
-                                    <ul>
-                                        <li>
-                                            <a href="@Url.Action("Create","Characters")">New Hero</a>"
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown-custom"><a href="@Url.Action("Index","Alignments")">Alignments</a>
-                                <div class="dropdown-item">
-                                    <ul>
-                                        <li>
-                                            <a href="@Url.Action("Create","Alignments")">New Alignment</a>"
-                                        </li>
-                                    </ul>
-                                </div></li>
-                            <li class="dropdown-custom"><a href="@Url.Action("Index","Status")">Statuses</a>
-                                <div class="dropdown-item">
-                                    <ul>
-                                        <li>
-                                            <a href="@Url.Action("Create","Status")">New Status</a>"
-                                        </li>
-                                    </ul>
-                                </div></li>
-                        }
-                        else if (User.IsInRole("Hero"))
-                        {
-                            <li><a href="@Url.Action("Index","Characters")">Heroes</a></li>
-                            <li><a href="@Url.Action("Index","Alignments")">Alignments</a></li>
-                            <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
-                        }
-                        <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li><a href="@Url.Action("LogOff","Account")">LogOut</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="@Url.Action("Login","Account")">Login</a></li>
-                            <li><a href="@Url.Action("Register","Account")">Register</a></li>
-                        }
-                    </ul>
+                            else if (User.IsInRole("Hero"))
+                            {
+                                <li><a href="@Url.Action("Index","Characters")">Heroes</a></li>
+                                <li><a href="@Url.Action("Index","Alignments")">Alignments</a></li>
+                                <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
+                            }
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="@Url.Action("LogOff","Account")">LogOut</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                                <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+       </header>
     @RenderBody()
     <hr />
     <footer class="footer">

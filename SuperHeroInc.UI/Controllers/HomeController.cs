@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using SuperHeroInc.UI.Models;
+using System.Net.Mail;
+using System.Web.Mvc;
 
 namespace SuperHeroInc.UI.Controllers
 {
@@ -22,5 +24,7 @@ namespace SuperHeroInc.UI.Controllers
 
             return View();
         }
+
     }
 }
+
