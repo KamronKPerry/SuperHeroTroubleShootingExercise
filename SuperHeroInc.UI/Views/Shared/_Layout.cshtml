@@ -16,13 +16,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/material.min.css" rel="stylesheet" />
     <link href="~/Content/ripples.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
-
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
     <header class="header">
@@ -48,39 +47,46 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home <div class="ripple-wrapper"></div></a></li>
+                        <li class="active"><a href="@Url.Action("Index","Home")">Home <div class="ripple-wrapper"></div></a></li>
                         <li><a href="@Url.Action("About","Home")">Our Mission</a></li>
-                        <li>
+                        <li class="dropdown-custom">
                             <a href="@Url.Action("Index","Events")">Events</a>
                             @if (User.IsInRole("Admin"))
                             {
-                                <ul>
+                                <div class="dropdown-item"><ul>
                                     <li><a href="@Url.Action("Create","Events")">Create Event</a></li>
-                                </ul>
+                                </ul></div>
                             }
                         </li>
 
                         @if (User.IsInRole("Admin"))
                         {
-                            <li>
+                            <li class="dropdown-custom">
                                 <a href="@Url.Action("Index","Characters")">Heroes</a>
-                                <ul>
-                                    <li><a href="@Url.Action("Create","Characters")">New Hero</a>"
-                                    </li>
-                                </ul>
+                                <div class="dropdown-item">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Create","Characters")">New Hero</a>"
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
-                            <li><a href="@Url.Action("Index","Alignments")">Alignments</a>
-                                <ul>
-                                    <li>
-                                        <a href="@Url.Action("Create","Alignments")">New Alignment</a>"
-                                    </li>
-                                </ul></li>
-                            <li><a href="@Url.Action("Index","Status")">Statuses</a>
-                                <ul>
-                                    <li>
-                                        <a href="@Url.Action("Create","Status")">New Status</a>"
-                                    </li>
-                                </ul></li>
+                            <li class="dropdown-custom"><a href="@Url.Action("Index","Alignments")">Alignments</a>
+                                <div class="dropdown-item">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Create","Alignments")">New Alignment</a>"
+                                        </li>
+                                    </ul>
+                                </div></li>
+                            <li class="dropdown-custom"><a href="@Url.Action("Index","Status")">Statuses</a>
+                                <div class="dropdown-item">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Create","Status")">New Status</a>"
+                                        </li>
+                                    </ul>
+                                </div></li>
                         }
                         else if (User.IsInRole("Hero"))
                         {
@@ -89,16 +95,15 @@
                             <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
                         }
                         <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                        <li>
-                            <div class="social-links">
-                                <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
-                                <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
-                                <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-google-plus"></i> <div class="ripple-wrapper"></div></a>
-                                <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-youtube"></i> <div class="ripple-wrapper"></div></a>
-                                <a class="btn social-link" href="javascript:void(0)"><i class="fa fa-linkedin"></i> <div class="ripple-wrapper"></div></a>
-                            </div>
-                        </li>
-                        <li>@Html.Partial("_LoginPartial")</li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="@Url.Action("LogOff","Account")">LogOut</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                            <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                        }
                     </ul>
                 </div>
             </div>
